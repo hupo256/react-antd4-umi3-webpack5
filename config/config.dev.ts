@@ -13,6 +13,10 @@ export default defineConfig({
     babelOptions: {},
   },
   webpack5: {
-    // lazyCompilation: {},
+    // lazyCompilation: {
+    //   // entries: true,
+    //   // imports: true,
+    //   // test: '11'
+    // },
   },
 });

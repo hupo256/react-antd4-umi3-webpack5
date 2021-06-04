@@ -65,4 +65,12 @@ export default defineConfig({
       projectName: 'swagger',
     },
   ],
+  chainWebpack: function (memo, { webpack }) {
+    console.log('===============>')
+    console.log(webpack.version)
+    // console.log(JSON.stringify(webpack, null, 2))
+    console.log('===============>')
+    memo.resolve.alias.set('@/show', '../src/components/ShowTex');
+  },
+  webpack5:{},
 });
