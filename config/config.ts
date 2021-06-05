@@ -65,4 +65,38 @@ export default defineConfig({
       projectName: 'swagger',
     },
   ],
+  chainWebpack: function (memo, { webpack, env }) {
+    const { ModuleFederationPlugin } = webpack.container
+    console.log('===============>')
+    console.log(webpack.version)  // 5.35.1
+    // console.log('webpack ===>', memo.toConfig())
+    console.log('===============>')
+
+    const FD = new ModuleFederationPlugin({
+      name: 'mktNext',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './noData': './src/pages/noData',
+      },
+      remotes: {
+        fdTest: 'fdTest@http://localhost:3004/remoteEntry.js',
+        sample: 'sample@http://localhost:8081/remoteEntry.js',
+      },
+      shared: {
+        reactRexport: {
+          import: 'react',
+          shareKey: 'react',
+          shareScope: 'default',
+          singleton: true,
+          eager: true,
+          version: require('react').version,
+          requiredVersion: require('../package.json').dependencies['react'],
+        },
+      },
+    })
+
+    memo.plugin('FederationPlugin').use(FD)
+
+  },
+  webpack5: {},
 });
