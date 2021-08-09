@@ -1,6 +1,6 @@
 # Ant Design Pro
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+antd4 + umi3 + webpack5 搭的微前端实现在 Ant Design Pro 下，项目同时具备 remote 与 hotst 功能
 
 ## Environment Prepare
 
